@@ -1,6 +1,9 @@
 var express=require("express");
 var bodyParser=require("body-parser");
 var mongoose=require("mongoose");
+let alert = require('alert'); 
+
+
 
 const app=express()
 
@@ -94,13 +97,20 @@ app.post("/login",async(req,res)=>{
             }*/
 
 const user = await db.collection('users').findOne({ email: email, password: password });
-console.log(user);
+
+
+// console.log(user);  // user information 
+
 
 
 if (user) {
   res.redirect("/")
-} else {
-  res.send("not a registered user");
+} 
+else { 
+    res.redirect('/register.html');
+// res.redirect("")
+  
+
 }
 
 
