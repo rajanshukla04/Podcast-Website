@@ -1,7 +1,7 @@
 var express=require("express");
 var bodyParser=require("body-parser");
 var mongoose=require("mongoose");
-let alert = require('alert'); 
+const http = require('http'); 
 
 
 
@@ -104,7 +104,18 @@ const user = await db.collection('users').findOne({ email: email, password: pass
 
 
 if (user) {
-  res.redirect("/")
+    res.redirect('http://localhost:5000');
+    
+    // const server = http.createServer((request, response) => {
+    //     response.writeHead(301, { 'Location': 'http://localhost:5000/' });
+    //   });
+
+
+
+
+    //response.writeHead(301, { 'Location':  });
+
+  //res.redirect("/localhost:5000/")
 } 
 else { 
     res.redirect('/register.html');
